@@ -1,13 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Form, Formik } from 'formik';
+import { GoArrowUpRight } from "react-icons/go";
+import { CgSpinner } from 'react-icons/cg';
+import * as Yup from "yup"
+
 import Homebg from "../../assets/img/home-bg.png"
 import Background from "../../assets/img/background_b.png"
 import LaptopA from "../../assets/img/laptop-a.png"
 import LaptopB from "../../assets/img/laptop-b.png"
 import Ipad from "../../assets/img/ipad.png"
+import Chair from "../../assets/img/chair.png"
 
-import { GoArrowUpRight } from "react-icons/go";
 
 const Home = () => {
+    const [loading, setLoading] = useState(false)
+
   return (
     <div>
                                                     {/* Banner */}
@@ -176,7 +183,154 @@ const Home = () => {
         </section>
 
                                                     {/* Contact */}
-        <section>
+        <section className='w-full flex gap-[150px] items-center mx-[50px] mt-[86px]'>
+            <div className='w-[576px]'>
+                <img src={Chair} alt='' className='h-[864px]' />
+            </div>
+            <div className='w-[576px]'>
+                <Formik
+                    initialValues={{
+                        firstName: "",
+                        lastName: "",
+                        email: "",
+                        phone: "",
+                        message: "",
+                        terms: ""
+                    }}
+                    // validationSchema={formValidationSchema}
+                    onSubmit={(values, action) => {
+                    window.scrollTo(0, 0);
+                    console.log(values, "market")
+                    // submitForm(values);
+                    action.resetForm();
+                    }}
+                >
+                {({
+                    handleSubmit,
+                    handleChange,
+                    dirty,
+                    isValid,
+                    setFieldValue,
+                    errors,
+                    touched,
+                    // setFieldTouched,
+                    values,
+                }) => (
+                    <Form onSubmit={handleSubmit} className="flex w-[480px] ">
+                        <div className="flex flex-col">
+                            <div className='flex flex-col gap-[20px]'>
+                                <p className='text-[#101828] font-inter font-semibold text-[36px]'>Let’s start your project</p>
+                                <p className='text-xl text-[#667085] font-inter'>Our friendly team would love to hear from you.</p>
+                            </div>
+                            <div className='flex flex-col gap-[24px] mt-[48px]'>
+                                <div className='flex w-full gap-[32px]'>
+                                    <div className='flex flex-col'>
+                                        <label htmlFor='firstName' className='font-hanken font-medium text-[#383838] text-base' >First name</label>
+                                        <input
+                                            name="firstName"
+                                            placeholder=""
+                                            type="text" 
+                                            value={values?.firstName}
+                                            onChange={handleChange}
+                                            className="outline-none w-[224px] bg-transparent rounded-lg border  border-[#D0D5DD] p-3 h-[46px] border-solid "
+                                        />
+                                        {errors.firstName && touched.firstName ? (
+                                        <div className="text-RED-_100 text-xs">
+                                            {errors.firstName}
+                                        </div>
+                                        ) : null}
+                                    </div>
+                                    <div className='flex flex-col'>
+                                        <label htmlFor='lastName' className='font-hanken font-medium text-[#383838] text-base'>Last name</label>
+                                        <input
+                                            name="lastName"
+                                            placeholder=""
+                                            type="text" 
+                                            value={values?.lastName}
+                                            onChange={handleChange}
+                                            className="outline-none w-[224px] border rounded-lg border-[#D0D5DD] bg-transparent p-3 h-[46px] border-solid "
+                                        />
+                                        {errors.lastName && touched.lastName ? (
+                                        <div className="text-RED-_100 text-xs">
+                                            {errors.lastName}
+                                        </div>
+                                        ) : null}
+                                    </div>
+                                </div>
+                                <div className='flex flex-col'>
+                                    <label htmlFor='email' className='font-hanken font-medium text-[#383838] text-base'>Email</label>
+                                    <input
+                                        name="email"
+                                        placeholder=""
+                                        type="text" 
+                                        value={values?.email}
+                                        onChange={handleChange}
+                                        className="outline-none w-full bg-transparent border rounded-lg border-[#D0D5DD] p-3 h-[46px] border-solid "
+                                    />
+                                    {errors.email && touched.email ? (
+                                    <div className="text-RED-_100 text-xs">
+                                        {errors.email}
+                                    </div>
+                                    ) : null}
+                                </div>
+                                <div className='flex flex-col'>
+                                    <label htmlFor='phone' className='font-hanken font-medium text-[#383838] text-base'>Phone Number</label>
+                                    <input
+                                        name="phone"
+                                        placeholder=""
+                                        type="text" 
+                                        value={values?.phone}
+                                        onChange={handleChange}
+                                        className="outline-none w-full bg-transparent border  rounded-lg border-[#D0D5DD] p-3 h-[46px] border-solid "
+                                    />
+                                    {errors.phone && touched.phone ? (
+                                    <div className="text-RED-_100 text-xs">
+                                        {errors.phone}
+                                    </div>
+                                    ) : null}
+                                </div>
+                                <div className='flex flex-col'>
+                                    <label htmlFor='message' className='font-hanken font-medium text-[#383838] text-base'>Message</label>
+                                    <textarea
+                                        name="message"
+                                        placeholder=""
+                                        rows="5"
+                                        type="text" 
+                                        value={values?.message}
+                                        onChange={handleChange}
+                                        className="outline-none w-full bg-transparent border rounded-lg border-[#D0D5DD] p-3  border-solid "
+                                    ></textarea>
+                                    {errors.message && touched.message ? (
+                                    <div className="text-RED-_100 text-xs">
+                                        {errors.message}
+                                    </div>
+                                    ) : null}
+                                </div>
+
+                                <div className='flex gap-[12px]'>
+                                    <input 
+                                        type='checkbox' 
+                                        value={values?.terms} 
+                                        onChange={handleChange} 
+                                        className='w-[20px] h-[20px] rounded-lg border-[6px] border-[#D0D5DD]' 
+                                    />
+                                    <p className='text-base text-inter text-[#667085]'>You agree to our friendly <span className='underline'>privacy policy.</span></p>
+                                </div>
+                            </div>
+
+                            <button
+                                className="w-[480px] font-inter rounded-lg flex items-center justify-center mt-[32px] h-[46px] bg-[#8D3203] text-WHITE-_100  px-2  py-1"
+                                type="submit"
+                                disabled={loading}
+                            >
+                                <p className='text-WHITE-_100 text-base  font-bold'>{loading ? <CgSpinner className=" animate-spin text-lg " /> : 'Send Message'}</p> 
+                            </button>
+                        </div>
+
+                    </Form>
+                )}
+                </Formik>
+            </div>
 
         </section>
 
@@ -202,7 +356,7 @@ const Home = () => {
                                 className='w-[329px] flex items-center justify-center gap-2 bg-WHITE-_100 h-[60px] text-center'
                                 onClick={() => { window.scroll(0, 0)} }
                             >
-                                <p className='font-bold text-base font-syncopate text-[#2E2E2E]'>Estimate Project</p>
+                                <p className='font-bold text-base font-syncopate text-[#2E2E2E]'>Contact Us</p>
                                 <GoArrowUpRight />
                             </button>
                             <div 
