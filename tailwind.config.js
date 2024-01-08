@@ -8,7 +8,11 @@ export default {
 
       fontFamily: {
         'hanken': ['Hanken Grotesk'],
-        'Kumbh': ['Kumbh Sans'],
+        'oleo': ['Oleo Script'],
+        'inter': ['Inter'],
+        'sans': ['DM Sans'],
+        'roboto': ['Roboto Mono'],
+        'syncopate': ['Syncopate']
       },
       colors: {
         MODAL_BACKGROUND: "rgba(0, 0, 0, 0.23)",
@@ -23,6 +27,10 @@ export default {
 
         RED: {
           _100: "#AF202D"
+        },
+
+        BROWN: {
+          _100: '#C9825D'
         }
         
       }
