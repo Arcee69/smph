@@ -3,7 +3,6 @@ import { Form, Formik } from 'formik';
 import { GoArrowUpRight } from "react-icons/go";
 import { CgSpinner } from 'react-icons/cg';
 import * as Yup from "yup"
-import { motion } from 'framer-motion';
 
 import Homebg from "../../assets/img/home-bg.png"
 import Background from "../../assets/img/background_b.png"
