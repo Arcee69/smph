@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Form, Formik } from 'formik';
 import { GoArrowUpRight } from "react-icons/go";
 import { CgSpinner } from 'react-icons/cg';
 import * as Yup from "yup"
+import { motion } from 'framer-motion';
 
 import Homebg from "../../assets/img/home-bg.png"
 import Background from "../../assets/img/background_b.png"
@@ -14,11 +15,63 @@ import Chair from "../../assets/img/chair.png"
 
 const Home = () => {
     const [loading, setLoading] = useState(false)
+    const [currentProjectValue, setCurrentProjectValue] = useState(0);
+    const [currentInvestmentValue, setCurrentInvestmentValue] = useState(0);
+    const [currentDownloadValue, setCurrentDownloadValue] = useState(0);
+    const [currentRatingValue, setCurrentRatingValue] = useState(0);
+
+    const projectValue = 400;
+    const investmentValue = 600;
+    const downloadValue = 10;
+    const ratingValue = 200;
+
+    const animationDuration = 2000; // in milliseconds
+    const animatedNumberRef = useRef(null);
+
+    useEffect(() => {
+      const element = animatedNumberRef.current;
+  
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              let startTimestamp;
+              let animationFrame;
+  
+              const animate = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = timestamp - startTimestamp;
+                const percentage = Math.min(progress / animationDuration, 1);
+  
+                setCurrentProjectValue(Math.floor(percentage * projectValue));
+                setCurrentInvestmentValue(Math.floor(percentage * investmentValue));
+                setCurrentDownloadValue(Math.floor(percentage * downloadValue));
+                setCurrentRatingValue(Math.floor(percentage * ratingValue));
+  
+                if (progress < animationDuration) {
+                  animationFrame = requestAnimationFrame(animate);
+                }
+              };
+  
+              animationFrame = requestAnimationFrame(animate);
+            }
+          });
+        },
+        { threshold: 0.5 } // Trigger when 50% of the element is visible
+      );
+  
+      observer.observe(element);
+  
+      return () => observer.disconnect();
+    }, [projectValue, animationDuration, investmentValue, downloadValue, ratingValue]);
 
   return (
     <div>
                                                     {/* Banner */}
-        <div 
+        <div
+            data-aos="fade-zoom-in"
+            data-aos-duration="3000"
+         
             className='w-full flex flex-col items-center justify-center px-[287px] pt-[100px] pb-[100px]'
             style={{ background: `url(${Homebg})`, backgroundRepeat:"no-repeat", backgroundSize:"cover",position: 'relative'}}
         > 
@@ -50,7 +103,10 @@ const Home = () => {
         </div>
 
                                                 {/* About */}
-        <section className='w-full mt-[278px]'>
+        <section 
+            className='w-full mt-[278px]'
+            data-aos="fade-up" data-aos-duration="3000"
+        >
             <div className='flex w-full mx-[30px] items-center'>
                 <p className='w-3/12 font-inter font-medium text-[20px] text-[#3D1601]'>
                     <span className='text-[#8D3203]'>Our services.</span> <br/> Strategy, design, software development & innovation.</p>
@@ -106,7 +162,7 @@ const Home = () => {
         </section>
 
                                             {/* Projects */}
-        <section className='mt-[133px] flex flex-col mx-[30px] w-full'>
+        <section className='mt-[133px] flex flex-col mx-[30px] w-full' data-aos="fade-up" data-aos-duration="3000">
             <p className='font-hanken text-[#272724] text-[46px] font-light' >A sample of our implemented <br /> <span className='text-[#3D1601] font-semibold'>projects</span></p>
             <div className='flex flex-col mx-20 mt-[185px]'>
                 <div className='flex w-full items-center justify-between'>
@@ -161,29 +217,29 @@ const Home = () => {
         </section>
 
                                         {/* Reviews */}
-        <section className='w-full mt-[96px]'>
+        <section className='w-full mt-[96px]'  data-aos="fade-up" data-aos-duration="3000">
             <div className='w-10/12 mx-auto flex items-center justify-between'>
-                <div className='flex flex-col gap-1.5'>
-                    <p className='text-[#101828] text-[60px] font-semibold font-inter'>400+</p>
+                <div ref={animatedNumberRef} className='flex flex-col gap-1.5'>
+                    <p className='text-[#101828] text-[60px] font-semibold font-inter'>{`${currentProjectValue}+`}</p>
                     <p className='text-[#667085] text-lg font-inter font-medium'>Projects completed</p>
                 </div>
                 <div className='flex flex-col gap-1.5'>
-                    <p className='text-[#101828] text-[60px] font-semibold font-inter'>600+</p>
+                    <p className='text-[#101828] text-[60px] font-semibold font-inter'>{`${currentInvestmentValue}+`}</p>
                     <p className='text-[#667085] text-lg font-inter font-medium'>Return on investment</p>
                 </div>
                 <div className='flex flex-col gap-1.5'>
-                    <p className='text-[#101828] text-[60px] font-semibold font-inter'>10k</p>
+                    <p className='text-[#101828] text-[60px] font-semibold font-inter'>{`${currentDownloadValue}k`}</p>
                     <p className='text-[#667085] text-lg font-inter font-medium'>Global downloads</p>
                 </div>
                 <div className='flex flex-col gap-1.5'>
-                    <p className='text-[#101828] text-[60px] font-semibold font-inter'>200+</p>
+                    <p className='text-[#101828] text-[60px] font-semibold font-inter'>{`${currentRatingValue}+`}</p>
                     <p className='text-[#667085] text-lg font-inter font-medium'>5-star reviews</p>
                 </div>
             </div>
         </section>
 
                                                     {/* Contact */}
-        <section className='w-full flex gap-[150px] items-center mx-[50px] mt-[86px]'>
+        <section className='w-full flex gap-[150px] items-center mx-[50px] mt-[86px]'  data-aos="fade-up" data-aos-duration="3000">
             <div className='w-[576px]'>
                 <img src={Chair} alt='' className='h-[864px]' />
             </div>
@@ -337,6 +393,7 @@ const Home = () => {
                                                     {/* Second Banner */}
         <section className='mt-24'>
             <div 
+                data-aos="fade-up" data-aos-duration="3000"
                 className='w-full flex flex-col items-center justify-center '
                 style={{ background: `url(${Background})`, backgroundRepeat:"no-repeat", backgroundSize:"cover",position: 'relative'}}
             > 
