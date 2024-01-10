@@ -89,7 +89,7 @@ const Home = () => {
                     className='mt-[42px] font-hanken w-[222px] bg-WHITE-_100 h-[60px] text-[24px] text-[#000] text-center'
                     onClick={() => { window.scroll(0, 0)} }
                 >
-                    Start Project
+                    Get In Touch
                 </button>
                 <button 
                     type='button'
@@ -118,7 +118,7 @@ const Home = () => {
             </div>
             <div className='mx-[30px] w-full  grid grid-cols-4 gap-4 mt-[128px]'>
                 <div className='flex flex-col w-[300px] border border-y-0 border-l-0 border-r border-[#CCD7E1] pr-[17px]'>
-                    <p className='text-[#5D7F9A] text-[30px]'>01</p>
+                    {/* <p className='text-[#5D7F9A] text-[30px]'>01</p> */}
                     <p className='mt-[64px] text-[#00143C] font-inter font-semibold text-xl'>Digital Strategy</p>
                     <p className='text-[#3C5268] text-sm font-sans mt-[24px]'>
                         Does your business need a digital update to stay competitive? Do you have an idea
@@ -128,7 +128,7 @@ const Home = () => {
                     </p>
                 </div>
                 <div className='flex flex-col w-[300px] border border-y-0 border-l-0 border-r border-[#CCD7E1] pr-[17px]'>
-                    <p className='text-[#5D7F9A] text-[30px]'>02</p>
+                    {/* <p className='text-[#5D7F9A] text-[30px]'>02</p> */}
                     <p className='mt-[64px] text-[#00143C] font-inter font-semibold text-xl'>UX/UI Design</p>
                     <p className='text-[#3C5268] text-sm font-sans mt-[24px]'>
                         From user research to concept, prototype to launch, UX/UI design is a process. We
@@ -138,7 +138,7 @@ const Home = () => {
                     </p>
                 </div>
                 <div className='flex flex-col w-[300px] border border-y-0 border-l-0 border-r border-[#CCD7E1] pr-[17px]'>
-                    <p className='text-[#5D7F9A] text-[30px]'>03</p>
+                    {/* <p className='text-[#5D7F9A] text-[30px]'>03</p> */}
                     <p className='mt-[64px] text-[#00143C] font-inter font-semibold text-xl'>Software Development</p>
                     <p className='text-[#3C5268] text-sm font-sans mt-[24px]'>
                         We build tailor-made software that serves your unique business needs and keeps
@@ -148,7 +148,7 @@ const Home = () => {
                     </p>
                 </div>
                 <div className='flex flex-col w-[300px]'>
-                    <p className='text-[#5D7F9A] text-[30px]'>04</p>
+                    {/* <p className='text-[#5D7F9A] text-[30px]'>04</p> */}
                     <p className='mt-[64px] text-[#00143C] font-inter font-semibold text-xl'>Innovation & Growth</p>
                     <p className='text-[#3C5268] text-sm font-sans mt-[24px]'>
                         We equip your business for a digital future and put you in the best position to attract
@@ -162,7 +162,7 @@ const Home = () => {
 
                                             {/* Projects */}
         <section className='mt-[133px] flex flex-col mx-[30px] w-full' data-aos="fade-up" data-aos-duration="3000">
-            <p className='font-hanken text-[#272724] text-[46px] font-light' >A sample of our implemented <br /> <span className='text-[#3D1601] font-semibold'>projects</span></p>
+            <p className='font-hanken text-[#272724] text-[46px] font-light' >Some of our implemented <span className='text-[#3D1601] font-semibold'>Projects</span></p>
             <div className='flex flex-col mx-20 mt-[185px]'>
                 <div className='flex w-full items-center justify-between'>
                     <div className='w-[784px]'>
@@ -194,7 +194,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div className='w-full mt-[30px]'>
+                {/* <div className='w-full mt-[30px]'>
                     <div className='w-10/12 mx-auto'>
                         <img src={LaptopB} alt='laptop' />
                         <div className='w-8/12 mx-auto flex flex-col gap-[24px]'>
@@ -211,7 +211,7 @@ const Home = () => {
                         </div>
                     </div>
 
-                </div>
+                </div> */}
             </div>
         </section>
 
@@ -275,7 +275,7 @@ const Home = () => {
                         <div className="flex flex-col">
                             <div className='flex flex-col gap-[20px]'>
                                 <p className='text-[#101828] font-inter font-semibold text-[36px]'>Let’s start your project</p>
-                                <p className='text-xl text-[#667085] font-inter'>Our friendly team would love to hear from you.</p>
+                                <p className='text-xl text-[#667085] font-inter'>Our dedicated team would love to hear from you.</p>
                             </div>
                             <div className='flex flex-col gap-[24px] mt-[48px]'>
                                 <div className='flex w-full gap-[32px]'>
