@@ -103,7 +103,7 @@ const Home = () => {
 
                                                 {/* About */}
         <section 
-            className='w-full mt-[278px]'
+            className='w-full mt-[18px]'
             data-aos="fade-up" data-aos-duration="3000"
         >
             <div className='flex w-full mx-[30px] items-center'>
@@ -396,7 +396,7 @@ const Home = () => {
                 className='w-full flex flex-col items-center justify-center '
                 style={{ background: `url(${Background})`, backgroundRepeat:"no-repeat", backgroundSize:"cover",position: 'relative'}}
             > 
-                <div className='w-[621px] flex flex-col gap-[38px] mx-auto my-[50px]'>
+                <div className='w-[621px] flex flex-col gap-[38px] mx-auto my-[20px]'>
                     <div className='flex flex-col gap-[15px]'>
                         <p className='font-roboto text-lg font-normal text-WHITE-_100 text-center'>
                             Need a successful project?
